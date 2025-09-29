@@ -8,6 +8,7 @@ public class Practica1 {
     public static Set<Integer> multiplos (Iterator<Integer> it) {
         //TODO
 
+
         return null;
     }
 
