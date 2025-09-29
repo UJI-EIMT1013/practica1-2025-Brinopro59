@@ -7,12 +7,15 @@ public class Practica1 {
     //EJERCICIO 1
     public static Set<Integer> multiplos (Iterator<Integer> it) {
         //TODO
+
         return null;
     }
 
     //EJERCICIO2
     public static void separate (Set<Integer> cuadrados, Set<Integer> noCuadrados)  {
         //TODO
+
+
 
     }
 
