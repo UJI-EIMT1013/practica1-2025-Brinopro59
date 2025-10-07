@@ -76,29 +76,29 @@ public class Practica1 {
 
     // EJERCICIO 4
     public static <T> Collection<Set<T>> coverageSet2(Set<T> u, ArrayList<Set<T>> col) {
-        // Iteramos sobre todos los pares de conjuntos en la lista col
-        for (int i = 0; i < col.size(); i++) {
-            for (int j = i + 1; j < col.size(); j++) {
-                // Obtenemos los conjuntos de los índices i y j
-                Set<T> set1 = col.get(i);
-                Set<T> set2 = col.get(j);
-
-                // Generamos la unión de los dos conjuntos
-                Set<T> union = new HashSet<>(set1);
-                union.addAll(set2);
-
-                // Comprobamos si la unión es igual al conjunto u
-                if (union.equals(u)) {
-                    // Si es igual, devolvemos los dos conjuntos encontrados en una lista
-                    return Arrays.asList(set1, set2);
+        Collection<Set<T>> resultado = new HashSet<Set<T>>() ;
+        Collection<Set<T>> colecVacia = new HashSet<Set<T>>() ;
+        if(u.isEmpty()){ // si el conjunto u es vació no hace falta buscar la unión de dos conjuntos
+            return colecVacia;
+        }
+        for (int i = 0; i < col.size()-1; i++){ // recorro la lista
+            for(int j = i + 1; j < col.size(); j++){ // recorro la lista a partir del siguiente elemento
+                Set<T> aux = new HashSet<>(); // creo un conjunto auxiliar donde almaceno los elementos de ambos conjuntos a analizar
+                if (!col.get(i).equals(u) && !col.get(j).equals(u))
+                {
+                    aux.addAll(col.get(i)); //añado los elementos al conjunto auxiliar
+                    aux.addAll(col.get(j));
+                    if (aux.equals(u)) { // miro si el conjunto auxiliar contiene todos los elementos de u
+                        resultado.add(col.get(i));
+                        resultado.add(col.get(j)); // si lo verifica, añado ambos conjuntos al conjunto a devolver
+                        return resultado; // devuelvo el conjunto que verifica la condición
+                    }
                 }
             }
         }
-
-        // Si no se encuentra ningún par de conjuntos, devolvemos una colección vacía
-        return Collections.emptyList();
+        return colecVacia;
     }
-
-
-
 }
+
+
+
