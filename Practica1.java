@@ -74,10 +74,29 @@ public class Practica1 {
         return resultado;
     }
 
-    //EJERCICIO 4
-    public static<T> Collection<Set<T>> coverageSet2 (Set<T> u,ArrayList<Set<T>> col) {
+    // EJERCICIO 4
+    public static <T> Collection<Set<T>> coverageSet2(Set<T> u, ArrayList<Set<T>> col) {
+        // Iteramos sobre todos los pares de conjuntos en la lista col
+        for (int i = 0; i < col.size(); i++) {
+            for (int j = i + 1; j < col.size(); j++) {
+                // Obtenemos los conjuntos de los índices i y j
+                Set<T> set1 = col.get(i);
+                Set<T> set2 = col.get(j);
 
-        return null;
+                // Generamos la unión de los dos conjuntos
+                Set<T> union = new HashSet<>(set1);
+                union.addAll(set2);
+
+                // Comprobamos si la unión es igual al conjunto u
+                if (union.equals(u)) {
+                    // Si es igual, devolvemos los dos conjuntos encontrados en una lista
+                    return Arrays.asList(set1, set2);
+                }
+            }
+        }
+
+        // Si no se encuentra ningún par de conjuntos, devolvemos una colección vacía
+        return Collections.emptyList();
     }
 
 
